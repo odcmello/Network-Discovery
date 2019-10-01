@@ -1,0 +1,75 @@
+DETECT-DEVICES-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS IpAddress, Counter, OBJECT-TYPE, Gauge, experimental FROM RFC1155-SMI 
+DisplayString FROM RFC1213-MIB
+TimeStamp FROM SNMPv2-TC;
+
+discovery OBJECT IDENTIFIER ::={experimental 1}
+
+Dispositivo ::= SEQUENCE {
+	ipAddress DisplayString,
+	macAddress DisplayString,
+        fabricante DisplayString,
+        status DisplayString,
+        tipo DisplayString,
+        horarioDescoberta TimeStamp
+}
+
+ipAddress OBJECT-TYPE
+	SYNTAX DisplayString(SIZE(0..255))
+	ACCESS read-only
+	STATUS mandatory
+	DESCRIPTION ""
+	::= {dispositivo 1}
+
+macAddress OBJECT-TYPE
+        SYNTAX DisplayString(SIZE(0..255))  
+        ACCESS read-only
+        STATUS mandatory
+        DESCRIPTION ""
+        ::= {dispositivo 2}
+
+fabricante OBJECT-TYPE
+        SYNTAX DisplayString(SIZE(0..255))  
+        ACCESS read-only
+        STATUS mandatory
+        DESCRIPTION ""
+        ::= {dispositivo 3}
+
+tipo OBJECT-TYPE
+        SYNTAX DisplayString(SIZE(0..255))  
+        ACCESS read-only
+        STATUS mandatory
+        DESCRIPTION ""
+        ::= {dispositivo 4}
+
+status OBJECT-TYPE
+        SYNTAX DisplayString(SIZE(0..255))  
+        ACCESS read-only
+        STATUS mandatory
+        DESCRIPTION ""
+        ::= {dispositivo 5}
+
+horarioDescoberta OBJECT-TYPE
+        SYNTAX TimeStamp
+        ACCESS read-only
+        STATUS mandatory
+        DESCRIPTION ""
+        ::= {dispositivo 6}
+
+dispositivo OBJECT-TYPE
+	SYNTAX Dispositivo
+	ACCESS not-accessible
+        STATUS mandatory
+        DESCRIPTION ""
+	INDEX {macAddress}
+	::= {ifTable 1}
+
+ifTable OBJECT-TYPE
+	SYNTAX SEQUENCE OF Dispositivo
+	ACCESS not-accessible
+        STATUS mandatory
+        DESCRIPTION ""
+        ::= {discovery 3}
+
+END
