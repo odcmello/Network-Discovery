@@ -82,7 +82,7 @@ dispositivosConectados OBJECT-TYPE
 
 tempoPeriodicidade OBJECT-TYPE
 	SYNTAX INTEGER
-	ACCESS read-only
+	ACCESS read-write
 	STATUS mandatory
 	DESCRIPTION 
                 "Tempo definido pelo usuário entre cada detecção de dispositivos na rede"
