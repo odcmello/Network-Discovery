@@ -20,7 +20,7 @@ ipAddress OBJECT-TYPE
 	ACCESS read-only
 	STATUS mandatory
 	DESCRIPTION 
-                "Endereço IP do dispositivo na rede"
+                "Endereco IP do dispositivo na rede"
 	::= {dispositivo 1}
 
 macAddress OBJECT-TYPE
@@ -28,7 +28,7 @@ macAddress OBJECT-TYPE
         ACCESS read-only
         STATUS mandatory
         DESCRIPTION 
-                "Endereço MAC do dispositivo na rede"
+                "Endereco MAC do dispositivo na rede"
         ::= {dispositivo 2}
 
 fabricante OBJECT-TYPE
@@ -44,7 +44,7 @@ tipo OBJECT-TYPE
         ACCESS read-only
         STATUS mandatory
         DESCRIPTION 
-                "Variável que define se um dispositivo é roteador ou host"
+                "Variavel que define se um dispositivo e roteador ou host"
         ::= {dispositivo 4}
 
 status OBJECT-TYPE
@@ -60,7 +60,7 @@ horarioDescoberta OBJECT-TYPE
         ACCESS read-only
         STATUS mandatory
         DESCRIPTION 
-                "Horário da primeira descoberta do dispositivo na rede"
+                "Horario da primeira descoberta do dispositivo na rede"
         ::= {dispositivo 6}
 
 dispositivo OBJECT-TYPE
@@ -68,7 +68,7 @@ dispositivo OBJECT-TYPE
 	ACCESS not-accessible
         STATUS mandatory
         DESCRIPTION 
-                "Objeto do tipo Dispositivo, contendo endereço IP, endereço MAC, fabricante, estado atual, seu tipo e horário de descoberta"
+                "Objeto do tipo Dispositivo, contendo endereco IP, endereco MAC, fabricante, estado atual, seu tipo e horario de descoberta"
 	INDEX {macAddress}
 	::= {dispositivosConectados 1}
 
@@ -85,7 +85,7 @@ tempoPeriodicidade OBJECT-TYPE
 	ACCESS read-write
 	STATUS mandatory
 	DESCRIPTION 
-                "Tempo definido pelo usuário entre cada detecção de dispositivos na rede"
+                "Tempo definido pelo usuario entre cada deteccao de dispositivos na rede"
 	::= {discovery 2}
 
 ipAddressInitial OBJECT-TYPE
@@ -93,7 +93,7 @@ ipAddressInitial OBJECT-TYPE
 	ACCESS read-only
 	STATUS mandatory
 	DESCRIPTION 
-                "Substring do endereço IP do meu dispositivo, será utilizado para identificar todos os IPs possíveis na rede"
+                "Substring do endereco IP do meu dispositivo, sera utilizado para identificar todos os IPs possiveis na rede"
 	::= {discovery 3}
 
 END
