@@ -19,57 +19,81 @@ ipAddress OBJECT-TYPE
 	SYNTAX DisplayString(SIZE(0..255))
 	ACCESS read-only
 	STATUS mandatory
-	DESCRIPTION ""
+	DESCRIPTION 
+                "Endereço IP do dispositivo na rede"
 	::= {dispositivo 1}
 
 macAddress OBJECT-TYPE
         SYNTAX DisplayString(SIZE(0..255))  
         ACCESS read-only
         STATUS mandatory
-        DESCRIPTION ""
+        DESCRIPTION 
+                "Endereço MAC do dispositivo na rede"
         ::= {dispositivo 2}
 
 fabricante OBJECT-TYPE
         SYNTAX DisplayString(SIZE(0..255))  
         ACCESS read-only
         STATUS mandatory
-        DESCRIPTION ""
+        DESCRIPTION 
+                "Nome do fabricante do dispositivo"
         ::= {dispositivo 3}
 
 tipo OBJECT-TYPE
         SYNTAX DisplayString(SIZE(0..255))  
         ACCESS read-only
         STATUS mandatory
-        DESCRIPTION ""
+        DESCRIPTION 
+                "Variável que define se um dispositivo é roteador ou host"
         ::= {dispositivo 4}
 
 status OBJECT-TYPE
         SYNTAX DisplayString(SIZE(0..255))  
         ACCESS read-only
         STATUS mandatory
-        DESCRIPTION ""
+        DESCRIPTION 
+                "Estado atual do dispositivo, pode ser novo, antigo, desativado e reativado"
         ::= {dispositivo 5}
 
 horarioDescoberta OBJECT-TYPE
         SYNTAX TimeStamp
         ACCESS read-only
         STATUS mandatory
-        DESCRIPTION ""
+        DESCRIPTION 
+                "Horário da primeira descoberta do dispositivo na rede"
         ::= {dispositivo 6}
 
 dispositivo OBJECT-TYPE
 	SYNTAX Dispositivo
 	ACCESS not-accessible
         STATUS mandatory
-        DESCRIPTION ""
+        DESCRIPTION 
+                "Objeto do tipo Dispositivo, contendo endereço IP, endereço MAC, fabricante, estado atual, seu tipo e horário de descoberta"
 	INDEX {macAddress}
-	::= {ifTable 1}
+	::= {dispositivosConectados 1}
 
-ifTable OBJECT-TYPE
+dispositivosConectados OBJECT-TYPE
 	SYNTAX SEQUENCE OF Dispositivo
 	ACCESS not-accessible
         STATUS mandatory
-        DESCRIPTION ""
-        ::= {discovery 3}
+        DESCRIPTION
+                "Lista contendo todos os dispositivos que foram detectados e suas propriedades"
+        ::= {discovery 1}
+
+tempoPeriodicidade OBJECT-TYPE
+	SYNTAX INTEGER
+	ACCESS read-only
+	STATUS mandatory
+	DESCRIPTION 
+                "Tempo definido pelo usuário entre cada detecção de dispositivos na rede"
+	::= {discovery 2}
+
+ipAddressInitial OBJECT-TYPE
+	SYNTAX DisplayString(SIZE(0..255))
+	ACCESS read-only
+	STATUS mandatory
+	DESCRIPTION 
+                "Substring do endereço IP do meu dispositivo, será utilizado para identificar todos os IPs possíveis na rede"
+	::= {discovery 3}
 
 END
